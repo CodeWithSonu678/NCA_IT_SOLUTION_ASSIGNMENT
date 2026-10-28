@@ -1,0 +1,230 @@
+// ================================
+// Variables
+// ================================
+$bg-color: #0b1120;
+$card-color: #111827;
+$primary-color: #6366f1;
+$secondary-color: #8b5cf6;
+$text-color: #f9fafb;
+$muted-color: #9ca3af;
+$border-color: #374151;
+$error-color: #ef4444;
+
+// ================================
+// Global Styles
+// ================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: $bg-color;
+  color: $text-color;
+}
+
+// ================================
+// Registration Container
+// ================================
+.registration-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(139, 92, 246, 0.15),
+      transparent 35%
+    ),
+    $bg-color;
+
+  // Form card
+  form {
+    width: 100%;
+    max-width: 460px;
+    padding: 36px;
+    background: rgba(17, 24, 39, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.35),
+      0 0 30px rgba(99, 102, 241, 0.05);
+
+    animation: formAppear 0.5s ease;
+
+    // Form heading
+    &::before {
+      content: "Create Account";
+      display: block;
+      font-size: 30px;
+      font-weight: 750;
+      letter-spacing: -0.8px;
+      text-align: center;
+      margin-bottom: 10px;
+      color: $text-color;
+    }
+
+    // Form description
+    &::after {
+      content: "Register to get started with your account.";
+      display: block;
+      font-size: 13px;
+      text-align: center;
+      color: $muted-color;
+      margin-bottom: 30px;
+    }
+
+    // ================================
+    // Input Field
+    // ================================
+    .input-field {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 21px;
+
+      label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #d1d5db;
+      }
+
+      input {
+        width: 100%;
+        height: 48px;
+        padding: 0 15px;
+
+        font-size: 14px;
+        color: $text-color;
+        background: #0b1220;
+
+        border: 1px solid $border-color;
+        border-radius: 10px;
+        outline: none;
+
+        transition:
+          border-color 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.25s ease;
+
+        &::placeholder {
+          color: #6b7280;
+        }
+
+        &:hover {
+          border-color: #6b7280;
+        }
+
+        &:focus {
+          border-color: $primary-color;
+          background: #10182a;
+
+          box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.14);
+        }
+      }
+    }
+
+    // ================================
+    // Submit Button
+    // ================================
+    .submit-btn-section {
+      width: 100%;
+      margin-top: 28px;
+
+      button {
+        width: 100%;
+        min-height: 49px;
+        padding: 12px 18px;
+
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        color: #fff;
+
+        background: linear-gradient(
+          135deg,
+          $primary-color,
+          $secondary-color
+        );
+
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          opacity 0.2s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+
+        &:focus-visible {
+          outline: 3px solid rgba(139, 92, 246, 0.5);
+          outline-offset: 3px;
+        }
+      }
+    }
+  }
+}
+
+// ================================
+// Animation
+// ================================
+@keyframes formAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ================================
+// Responsive Design
+// ================================
+@media (max-width: 480px) {
+  .registration-container {
+    padding: 20px 14px;
+
+    form {
+      padding: 26px 20px;
+      border-radius: 16px;
+
+      &::before {
+        font-size: 26px;
+      }
+
+      .input-field {
+        margin-bottom: 18px;
+
+        input {
+          height: 46px;
+        }
+      }
+    }
+  }
+}
